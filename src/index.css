@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-noir-950: #070709;
+  --color-noir-900: #0B0C0E;
+  --color-noir-850: #111215;
+  --color-noir-800: #17181D;
+  --color-noir-700: #23252B;
+  --color-noir-600: #343740;
+  --color-champagne-100: #FBF7EE;
+  --color-champagne-200: #F4ECE0;
+  --color-champagne-300: #E9DCBE;
+  --color-champagne-400: #DCC398;
+  --color-champagne-500: #C9A96E;
+  --color-champagne-600: #A98748;
+  --color-champagne-700: #7E6330;
+  --color-amberGlow: #DF8A3E;
+  --font-serif: "Cormorant Garamond", "Didot", "Bodoni MT", serif;
+  --font-sans: "Montserrat", "Inter", sans-serif;
+  --font-display: "Cinzel Decorative", "Cormorant Garamond", serif;
+  --letter-spacing-ultra-wide: 0.35em;
+  --letter-spacing-super-wide: 0.25em;
+  --animate-float-subtle: float 7s ease-in-out infinite;
+  --animate-pulse-soft: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-subtle: glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-14px) rotate(0.8deg); } }
+@keyframes glow { 0% { opacity: 0.4; filter: blur(45px); } 100% { opacity: 0.75; filter: blur(65px); } }
