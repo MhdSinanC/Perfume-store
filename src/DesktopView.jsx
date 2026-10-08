@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import ProgressIndicator from './ProgressIndicator';
 import { useStore } from './context/useStore';
 import SearchModal from './components/SearchModal';
@@ -24,15 +24,53 @@ export default function DesktopView() {
     isInWishlist,
     isBagOpen,
     setIsBagOpen,
+    isWishlistOpen,
     setIsWishlistOpen,
+    isSearchOpen,
     setIsSearchOpen,
+    isCheckoutOpen,
     setIsCheckoutOpen,
+    isClientSpaceOpen,
     setIsClientSpaceOpen,
+    selectedProductForModal,
     setSelectedProductForModal
   } = useStore();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeAccord, setActiveAccord] = useState('top');
+
+  // Scroll Lock for Modals & Overlays
+  useEffect(() => {
+    const isAnyModalOpen =
+      isMobileMenuOpen ||
+      isBagOpen ||
+      isWishlistOpen ||
+      isSearchOpen ||
+      isCheckoutOpen ||
+      isClientSpaceOpen ||
+      !!selectedProductForModal;
+
+    if (isAnyModalOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [
+    isMobileMenuOpen,
+    isBagOpen,
+    isWishlistOpen,
+    isSearchOpen,
+    isCheckoutOpen,
+    isClientSpaceOpen,
+    selectedProductForModal
+  ]);
 
   // Studio Product State
   const [studioProductId, setStudioProductId] = useState('noiree-eclat');
@@ -385,7 +423,7 @@ export default function DesktopView() {
                   <img
                     alt="Luxury perfume bottle NOIRÉÉ ÉÉCLAT, heavy obsidian black faceted glass bottle with subtle amber liquid glowing from within"
                     className="w-full max-w-[420px] md:max-w-[480px] h-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.85)] filter brightness-105"
-                    src="/luxury_perfume_bottle_noir_clat_heavy_obsidian_black_faceted_glass_bottle_with.png"
+                    src="/luxury_perfume_bottle_noir_clat_heavy_obsidian_black_faceted_glass_bottle_with_nobg.png"
                   />
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 h-8 bg-amberGlow/25 rounded-full blur-2xl -z-10"></div>
                 </div>
